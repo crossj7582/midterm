@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOU ARE THE COMMANDER | WWII Midterm Review</title>
+<style>
+:root{--bg:#101712;--panel:#19231c;--panel2:#222e25;--text:#f0f2e8;--muted:#b9c4b6;--green:#a8c686;--gold:#e3bd65;--red:#df8276;--line:#3d4b3f}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#253629 0,#101712 58%);color:var(--text);font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+header{border-bottom:1px solid var(--line);padding:22px 16px;text-align:center;background:#0b100d}
+.kicker{letter-spacing:3px;color:var(--green);font-size:.75rem;font-weight:bold}
+h1{margin:8px 0 5px;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:1px}
+.subtitle{color:var(--muted);margin:0}
+main{max-width:900px;margin:0 auto;padding:22px 16px 45px}
+.panel{background:rgba(25,35,28,.97);border:1px solid var(--line);border-radius:14px;padding:clamp(17px,3vw,28px);box-shadow:0 10px 30px #0003}
+.hidden{display:none!important}
+.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:15px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:.82rem;color:var(--green);font-weight:bold}
+.progress{height:8px;background:#0b100d;border-radius:10px;overflow:hidden;margin:12px 0 22px}
+.progress span{display:block;height:100%;width:0;background:var(--green);transition:width .25s}
+h2{font-size:clamp(1.35rem,3vw,2rem);margin:12px 0}
+h3{margin:0 0 8px}
+.intel-label{font-size:.75rem;letter-spacing:2px;color:var(--gold);font-weight:bold;margin-bottom:8px}
+.intel{background:#101812;border-left:4px solid var(--gold);padding:15px 16px;border-radius:5px;color:#e3e8dd;line-height:1.55;margin:17px 0}
+.prompt{font-size:1.12rem;line-height:1.55;font-weight:bold}
+.choices{display:grid;gap:11px;margin-top:20px}
+.choice{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;padding:15px;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;cursor:pointer;font-size:1rem;line-height:1.45;transition:transform .12s,border-color .12s}
+.choice:hover:not(:disabled){border-color:var(--green);transform:translateY(-1px)}
+.letter{flex:0 0 32px;height:32px;display:grid;place-items:center;border-radius:7px;background:#111a13;color:var(--green);font-weight:bold}
+.choice:disabled{cursor:default;opacity:1}
+.choice.correct{border-color:var(--green);background:#263c2a}
+.choice.good{border-color:var(--gold);background:#3a3420}
+.choice.bad{border-color:var(--red);background:#3b2523}
+.feedback{margin-top:18px;border:1px solid var(--line);border-radius:10px;padding:16px;line-height:1.55;background:#111812}
+.feedback strong{color:var(--green)}
+button.primary,button.secondary{border:0;border-radius:9px;padding:13px 18px;font-size:1rem;font-weight:bold;cursor:pointer}
+button.primary{background:var(--green);color:#142016}
+button.primary:hover{background:#c3dba8}
+button.secondary{background:#303d32;color:var(--text);border:1px solid var(--line)}
+.actions{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:20px}
+.small{font-size:.88rem;color:var(--muted);line-height:1.5}
+.start-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:22px 0}
+.stat{padding:14px;border:1px solid var(--line);border-radius:10px;background:#111812}
+.stat b{display:block;font-size:1.3rem;color:var(--green);margin-bottom:4px}
+input{width:100%;padding:13px;border-radius:8px;background:#101812;border:1px solid var(--line);color:var(--text);font-size:1rem;margin-top:7px}
+label{font-size:.9rem;color:var(--muted)}
+.score-big{font-size:clamp(2.5rem,9vw,5rem);font-weight:900;color:var(--green);line-height:1.1}
+.rank{font-size:clamp(1.5rem,5vw,2.5rem);font-weight:900;color:var(--gold);margin:10px 0}
+.meter{height:15px;background:#0b100d;border-radius:10px;overflow:hidden;margin:14px 0}
+.meter span{display:block;height:100%;background:var(--green)}
+.review-item{border-top:1px solid var(--line);padding:14px 0;line-height:1.5}
+.review-item:last-child{border-bottom:1px solid var(--line)}
+@media(min-width:700px){.choices{grid-template-columns:1fr 1fr}}
+@media print{body{background:#fff;color:#000}.panel{box-shadow:none;background:#fff;border:1px solid #aaa}.small,.subtitle{color:#333}button{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">HISTORICAL COMMAND SIMULATION</div>
+  <h1>YOU ARE THE COMMANDER</h1>
+  <p class="subtitle">World War II Midterm Review • 20 Mission Decisions</p>
+</header>
+<main>
+<section id="start" class="panel">
+  <div class="kicker">COMMAND HQ // BRIEFING ROOM</div>
+  <h2>Command the operation. Prove your readiness.</h2>
+  <p class="small">You are in command of a WWII operation. Read each intelligence briefing, evaluate four possible decisions, and choose the response that best demonstrates historical understanding. Decisions earn or lose points. Your final report includes a percentage and military-style rank.</p>
+  <div class="start-grid">
+    <div class="stat"><b>20</b><span class="small">Mission decisions</span></div>
+    <div class="stat"><b>80 pts</b><span class="small">Maximum score</span></div>
+    <div class="stat"><b>4 choices</b><span class="small">Each mission</span></div>
+  </div>
+  <div style="margin:16px 0">
+    <label for="teamName">Team / Commander name (optional)</label>
+    <input id="teamName" maxlength="40" placeholder="e.g., Task Force Eagles">
+  </div>
+  <div class="intel"><b>RULES OF ENGAGEMENT</b><br>Best decision: +4 points • Sound but incomplete: +2 points • Incorrect decision: −2 points • Worst decision: −4 points.<br><span class="small">Your raw score can range from −80 to 80. The percentage is calculated as (score + 80) ÷ 160 × 100, so every possible score maps to a 0–100% performance scale.</span></div>
+  <button class="primary" onclick="startGame()">ACCEPT COMMAND ▶</button>
+</section>
+
+<section id="game" class="panel hidden">
+  <div class="topline">
+    <span class="pill" id="missionPill">MISSION 1 / 20</span>
+    <span class="pill" id="scorePill">FIELD SCORE: 0</span>
+  </div>
+  <div class="progress"><span id="progressBar"></span></div>
+  <div class="intel-label">INTELLIGENCE BRIEFING</div>
+  <h2 id="topic"></h2>
+  <div class="intel" id="intel"></div>
+  <div class="prompt" id="question"></div>
+  <div class="choices" id="choices"></div>
+  <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+  <div class="actions">
+    <span class="small" id="status">Select your command decision.</span>
+    <button id="nextBtn" class="primary hidden" onclick="nextQuestion()">NEXT MISSION ▶</button>
+  </div>
+</section>
+
+<section id="results" class="panel hidden">
+  <div class="kicker">AFTER-ACTION REPORT // CLASSIFIED</div>
+  <h2 id="resultTitle">Mission Complete</h2>
+  <p class="small" id="resultTeam"></p>
+  <div class="score-big" id="percent">0%</div>
+  <div class="rank" id="rank">RECRUIT</div>
+  <p id="rankDesc" class="small"></p>
+  <div class="meter"><span id="meterFill" style="width:0%"></span></div>
+  <div class="start-grid">
+    <div class="stat"><b id="rawScore">0 / 80</b><span class="small">Raw points earned</span></div>
+    <div class="stat"><b id="correctCount">0 / 20</b><span class="small">Best decisions selected</span></div>
+    <div class="stat"><b id="missionsDone">20</b><span class="small">Missions completed</span></div>
+  </div>
+  <h3>Mission Debrief</h3>
+  <p class="small">Review each decision below. Use the explanations to prepare for the essay questions on the midterm.</p>
+  <div id="review"></div>
+  <div class="actions">
+    <button class="secondary" onclick="window.print()">PRINT REPORT</button>
+    <button class="primary" onclick="restartGame()">REDEPLOY / PLAY AGAIN</button>
+  </div>
+</section>
+</main>
+<script>
+const missions = [
+{topic:"Mission 1 — The Treaty of Versailles",intel:"Europe, 1919–1933. Germany faces reparations, territorial losses, military restrictions, and resentment after World War I. The Great Depression later causes mass unemployment and deep political instability.",q:"Which assessment best explains how these conditions helped dictators rise?",choices:[
+{t:"The treaty and Depression created grievances and hardship that Hitler exploited with promises of national revival; they helped create conditions for his rise but were not the only causes.",p:4,fb:"Correct. Versailles resentment, economic crisis, nationalism, and political instability helped Hitler win support."},
+{t:"The Treaty of Versailles immediately made Germany a dictatorship in 1919.",p:-2,fb:"The treaty did not immediately create a dictatorship. Hitler became chancellor in 1933 after years of political and economic turmoil."},
+{t:"The Depression strengthened public trust in Germany's democratic government and removed support for extremists.",p:-4,fb:"The crisis weakened confidence in democratic leaders and helped extremist movements gain support."},
+{t:"Only Japan was affected by the Depression, so economic problems had no role in Hitler's rise.",p:2,fb:"Economic crisis affected many countries. It was an important factor in Germany, alongside resentment, nationalism, and political choices."}]},
+{topic:"Mission 2 — Appeasement and Collective Security",intel:"During the 1930s, Japan seized Manchuria, Italy invaded Ethiopia, and Germany rearmed and expanded. Britain and France feared another devastating war and struggled to enforce international agreements.",q:"Which decision best explains why appeasement failed to stop Hitler?",choices:[
+{t:"Britain and France made concessions, including at Munich, hoping to preserve peace; Hitler interpreted the lack of forceful resistance as an opportunity to expand further.",p:4,fb:"Correct. Appeasement failed to deter further aggression and undermined confidence in collective security."},
+{t:"The League of Nations invaded Germany and forced Hitler to give up the Rhineland.",p:-4,fb:"The League did not force Germany out of the Rhineland. German troops remilitarized it in 1936 without a military response from France or Britain."},
+{t:"The Munich Agreement immediately brought Germany and Britain into a full military alliance.",p:-2,fb:"The agreement gave Germany the Sudetenland in hopes of avoiding war; it did not create a military alliance."},
+{t:"Appeasement meant Britain and France declared war on Germany in 1936.",p:2,fb:"Britain and France did not declare war over the Rhineland. They declared war after Germany invaded Poland in September 1939."}]},
+{topic:"Mission 3 — Nazi Radicalization",intel:"Between 1935 and 1939, the Nazi regime expanded its military, passed racial laws, intervened in Spain, annexed Austria, and intensified violence against Jewish people.",q:"Which example best shows Nazi persecution becoming more openly violent?",choices:[
+{t:"The Munich Agreement transferred the Sudetenland to Germany.",p:2,fb:"Munich demonstrates expansion and appeasement, but it is not the clearest example of escalating racial violence."},
+{t:"Kristallnacht in November 1938, when Nazi-led attacks destroyed Jewish homes, businesses, and synagogues and led to mass arrests.",p:4,fb:"Correct. Kristallnacht marked a major escalation from legal discrimination to widespread, organized violence."},
+{t:"The League of Nations created the Nuremberg Laws to protect German Jews.",p:-4,fb:"The Nazi government enacted the Nuremberg Laws in 1935 to strip Jews of rights and citizenship."},
+{t:"The Condor Legion fought for the Spanish Republic against Franco.",p:-2,fb:"Germany's Condor Legion supported Franco's Nationalist forces, including the bombing of Guernica."}]},
+{topic:"Mission 4 — Blitzkrieg",intel:"Germany's early victories used fast-moving armored units, motorized infantry, and air power. Speed, surprise, communications, and concentrated attacks disrupted enemy defenses.",q:"Which command plan best describes Blitzkrieg?",choices:[
+{t:"Use tanks, aircraft, and motorized infantry together to punch through defenses, disrupt communications, and encircle enemy forces.",p:4,fb:"Correct. Blitzkrieg relied on speed, surprise, and coordinated combined-arms attacks."},
+{t:"Advance slowly in a single line while waiting for the enemy to run out of ammunition.",p:-4,fb:"This does not describe the speed and coordination central to Blitzkrieg."},
+{t:"Use only battleships to defeat Poland and France.",p:-2,fb:"Germany's campaigns in Poland and France relied heavily on land forces and air support, not battleships."},
+{t:"Avoid aircraft and tanks because they cannot support ground troops.",p:2,fb:"Aircraft and armor were key elements of German combined-arms warfare."}]},
+{topic:"Mission 5 — The Limits of Blitzkrieg",intel:"Germany defeated Poland in 1939 and France in 1940, but Britain remained undefeated from the air. Later, the invasion of the Soviet Union stretched German forces across vast distances.",q:"Why did Germany's early-war approach become harder to sustain?",choices:[
+{t:"German forces had no tanks or aircraft after the invasion of Poland.",p:-4,fb:"Germany continued using tanks and aircraft; the problem was not their total disappearance."},
+{t:"Speed and surprise could not solve every problem: Britain resisted, while distance, weather, Soviet resistance, and supply shortages strained the Eastern Front.",p:4,fb:"Correct. Blitzkrieg was powerful but had limits against an island defended by air power and across the enormous Soviet Union."},
+{t:"Blitzkrieg failed in France because Germany never used motorized infantry.",p:-2,fb:"German forces used motorized units in the campaign that defeated France in 1940."},
+{t:"Germany stopped using combined-arms tactics as soon as war began.",p:2,fb:"Germany continued using combined-arms tactics, but operational and logistical problems increasingly limited success."}]},
+{topic:"Mission 6 — Operation Barbarossa",intel:"In June 1941, Germany invaded the Soviet Union. Early encirclements captured huge numbers of Soviet troops, but the front stretched across enormous distances.",q:"Which decision would best address the biggest strategic danger facing Germany in the Soviet Union?",choices:[
+{t:"Ignore fuel, spare parts, food, and winter equipment because victory is guaranteed after the first battles.",p:-4,fb:"Ignoring logistics made German forces increasingly vulnerable as the campaign lengthened."},
+{t:"Keep advancing in every direction without clear priorities or supply planning.",p:-2,fb:"Overextension and competing objectives contributed to German failure to achieve a quick victory."},
+{t:"Plan realistic objectives and secure supply lines while preparing for Soviet resistance and a prolonged campaign.",p:4,fb:"Correct. Logistics, distance, Soviet resilience, and realistic planning were critical strategic issues."},
+{t:"Withdraw all German forces before the invasion begins because the Soviet Union had already conquered Berlin.",p:2,fb:"The Soviet Union had not conquered Berlin before the invasion; the answer identifies no real 1941 situation."}]},
+{topic:"Mission 7 — Stalingrad",intel:"In late 1942, Soviet forces launched Operation Uranus against the weaker Romanian-held flanks around Stalingrad, encircling German forces. The German Sixth Army surrendered in February 1943.",q:"What made the Soviet victory at Stalingrad a major turning point?",choices:[
+{t:"It caused Britain to surrender to Germany.",p:-4,fb:"Britain did not surrender. The battle took place on the Eastern Front."},
+{t:"It destroyed every German army in Europe in one battle.",p:-2,fb:"Germany lost a major force, but many German armies remained in the war."},
+{t:"It gave Germany control of the Soviet oil fields and ended Soviet resistance.",p:2,fb:"Germany failed to achieve its objectives, and Soviet resistance continued."},
+{t:"It destroyed a major German field army, halted the German advance, and strengthened the Soviet initiative on the Eastern Front.",p:4,fb:"Correct. Stalingrad was a major defeat for Germany and a turning point in the Eastern Front struggle."}]},
+{topic:"Mission 8 — The Battle of Britain",intel:"In 1940, the Luftwaffe tried to weaken Britain's air defenses. The RAF used radar, observers, fighters, and an organized command system to defend the skies.",q:"Why did Germany fail to gain the air superiority needed for Operation Sea Lion?",choices:[
+{t:"The RAF and Britain's radar-supported defense system prevented the Luftwaffe from achieving lasting air superiority.",p:4,fb:"Correct. Without control of the skies, a cross-Channel invasion was too risky."},
+{t:"Britain had no aircraft, so Germany canceled the invasion out of respect.",p:-4,fb:"Britain had an effective fighter force and air defense network."},
+{t:"The United States had already invaded Germany in 1940.",p:-2,fb:"The United States did not enter the war until after Pearl Harbor in December 1941."},
+{t:"Germany won complete air superiority, then chose to invade the Soviet Union the next day.",p:2,fb:"Germany did not achieve the air superiority needed to invade Britain; the Soviet invasion began in June 1941."}]},
+{topic:"Mission 9 — Lend-Lease",intel:"The United States officially remained outside the war in Europe but increasingly supported countries fighting the Axis. The Lend-Lease Act passed in March 1941.",q:"How did Lend-Lease change America's role before it formally entered the war?",choices:[
+{t:"It forced Britain to supply weapons to Germany.",p:-4,fb:"Lend-Lease helped Britain and other countries fighting the Axis."},
+{t:"It allowed the United States to provide weapons, vehicles, food, and other supplies to countries considered vital to American defense.",p:4,fb:"Correct. Lend-Lease made the United States an important supplier to the Allied war effort before its formal entry."},
+{t:"It declared war on Japan in 1939.",p:-2,fb:"The United States declared war on Japan after Pearl Harbor in December 1941."},
+{t:"It required all American factories to stop producing military equipment.",p:2,fb:"Lend-Lease helped expand American production and supply of war materials."}]},
+{topic:"Mission 10 — Japan's Expansion and the Oil Embargo",intel:"Japan's war in China and expansion across Asia increased tensions with the United States. American restrictions, including the 1941 oil embargo, threatened Japan's ability to sustain its military operations.",q:"Why did Japanese leaders consider attacking American forces in the Pacific?",choices:[
+{t:"Japan wanted to surrender its empire to the United States before any fighting began.",p:-4,fb:"Japanese leaders sought to expand and protect their empire, not surrender it."},
+{t:"Japan believed the United States had no navy and could not respond.",p:-2,fb:"The U.S. Navy was a major Pacific power, though Japanese planners hoped a surprise attack would delay its response."},
+{t:"Japan aimed to weaken the U.S. Pacific Fleet and gain time to seize resource-rich territory across Southeast Asia.",p:4,fb:"Correct. Japanese leaders hoped a surprise blow would delay American interference with their expansion."},
+{t:"Japan attacked because the United States had already invaded Tokyo.",p:2,fb:"The United States had not invaded Tokyo before Pearl Harbor."}]},
+{topic:"Mission 11 — Pearl Harbor",intel:"On December 7, 1941, Japanese carrier aircraft attacked Pearl Harbor. Many American battleships were damaged or sunk, but U.S. aircraft carriers were not in port.",q:"Which statement best evaluates Japan's attack on Pearl Harbor?",choices:[
+{t:"It destroyed every American carrier and forced the United States to leave the Pacific permanently.",p:-4,fb:"American carriers survived, and the attack did not force the United States out of the Pacific."},
+{t:"It achieved complete victory because the United States never entered World War II.",p:-2,fb:"The attack brought the United States into the war."},
+{t:"It immediately captured Hawaii and ended American industrial production.",p:2,fb:"Japan did not capture Hawaii, and American production expanded during the war."},
+{t:"It damaged the Pacific Fleet and bought Japan time initially, but it brought the United States fully into the war and exposed Japan to America's industrial power.",p:4,fb:"Correct. The attack produced short-term damage but a major long-term strategic consequence for Japan."}]},
+{topic:"Mission 12 — Technology and Combined Arms",intel:"Early WWII campaigns involved tanks, aircraft, motorized infantry, radio communications, and reconnaissance. Their effectiveness depended on coordination and planning.",q:"Which statement best explains how technology influenced early WWII warfare?",choices:[
+{t:"Technology mattered only at sea and had no effect on land battles.",p:-2,fb:"Tanks, aircraft, radios, and reconnaissance influenced land campaigns as well as naval warfare."},
+{t:"Coordinated technology and combined-arms tactics could create breakthroughs, but success still depended on logistics, training, intelligence, and command.",p:4,fb:"Correct. Technology amplified effective planning but could not guarantee victory by itself."},
+{t:"Any army with the newest tank was guaranteed to win every battle.",p:-4,fb:"Equipment alone cannot overcome poor logistics, strategy, or an opponent's adaptation."},
+{t:"Radio communications made supply lines and leadership unnecessary.",p:2,fb:"Radios improved coordination but did not remove the need for supply and leadership."}]},
+{topic:"Mission 13 — Radar and Reconnaissance",intel:"Radar helped Britain's defenders detect incoming aircraft. In the Pacific, reconnaissance and codebreaking helped commanders understand enemy movements and plan carrier operations.",q:"What is the best lesson about intelligence technology?",choices:[
+{t:"Radar and codebreaking were useful only after a battle had ended.",p:-2,fb:"They could provide vital warning and planning advantages before and during battles."},
+{t:"Intelligence automatically wins a battle, even if commanders ignore it.",p:2,fb:"Intelligence can provide an advantage, but leaders must interpret and act on it."},
+{t:"Early warning, reconnaissance, and codebreaking can help commanders prepare and position forces, but they must be paired with sound decisions.",p:4,fb:"Correct. Information creates an advantage when it is used effectively."},
+{t:"All codebreaking was invented after World War II.",p:-4,fb:"Codebreaking was important during World War II, including in the Pacific."}]},
+{topic:"Mission 14 — The Spanish Civil War",intel:"Germany and Italy supported Francisco Franco's Nationalists during the Spanish Civil War. Germany's Condor Legion gained experience with air operations, and the bombing of Guernica became a symbol of attacks on civilians.",q:"What did German involvement in Spain reveal?",choices:[
+{t:"Germany supported the Spanish Republic and opposed Franco.",p:-2,fb:"Germany supported Franco's Nationalists."},
+{t:"Germany had abandoned military aviation and refused to test aircraft.",p:-4,fb:"German intervention gave the Luftwaffe experience and demonstrated the destructive potential of air power."},
+{t:"The Spanish Civil War ended before Germany developed any military forces.",p:2,fb:"Germany was rearming and used the conflict to support Franco and gain experience."},
+{t:"Germany and Italy used the conflict to support Franco, test military methods, and advance their influence; Guernica exposed the dangers of aerial attacks on civilians.",p:4,fb:"Correct. Spain served as a proving ground for German and Italian support and illustrated the effects of air attacks."}]},
+{topic:"Mission 15 — The Eastern Front and Supply",intel:"German armies advanced deep into the Soviet Union, but their supply lines lengthened. Soviet forces moved industry eastward, mobilized reserves, and continued resisting despite enormous losses.",q:"Which factor most directly limited Germany's ability to sustain its eastern campaign?",choices:[
+{t:"Long distances, supply shortages, Soviet resistance, and the failure to achieve quick decisive objectives.",p:4,fb:"Correct. Logistics and Soviet resilience undermined Germany's hope for a rapid victory."},
+{t:"Germany had unlimited fuel and supplies, so logistics played no role.",p:-4,fb:"German forces faced serious fuel, transport, and supply problems."},
+{t:"The Soviet Union had no factories or military reserves after the first month.",p:-2,fb:"The Soviet Union relocated industry and mobilized additional forces."},
+{t:"Germany's only problem was that Britain controlled every road in the Soviet Union.",p:2,fb:"This does not describe the key logistical and operational challenges faced by German forces."}]},
+{topic:"Mission 16 — Coral Sea",intel:"In May 1942, carrier forces fought the Battle of the Coral Sea without the opposing surface fleets directly sighting one another. Allied action stopped Japan's seaborne attempt to take Port Moresby.",q:"Why was Coral Sea strategically important?",choices:[
+{t:"It proved battleships had made aircraft carriers useless.",p:-2,fb:"The battle demonstrated the importance of carrier-based aircraft."},
+{t:"It stopped the Japanese Port Moresby operation by sea, even though Allied ship losses were significant.",p:4,fb:"Correct. Coral Sea was a strategic Allied success despite tactical losses."},
+{t:"It ended the war in the Pacific in May 1942.",p:-4,fb:"The Pacific War continued for more than three years."},
+{t:"It was fought in the Atlantic between Germany and Britain.",p:2,fb:"Coral Sea was a Pacific battle involving Japanese and Allied carrier forces."}]},
+{topic:"Mission 17 — Midway Codebreaking",intel:"American codebreakers helped determine that Japan planned to attack Midway. Admiral Chester Nimitz used this intelligence to position American carriers for an ambush in June 1942.",q:"Which combination best explains the American success at Midway?",choices:[
+{t:"The United States had no intelligence and sent every ship randomly across the Pacific.",p:-4,fb:"American intelligence helped identify the target and prepare the defense."},
+{t:"Japan had already surrendered before the carriers arrived.",p:-2,fb:"Japan launched a major operation and fought hard at Midway."},
+{t:"Codebreaking, reconnaissance, carrier positioning, and effective air strikes helped the United States sink four Japanese fleet carriers.",p:4,fb:"Correct. Intelligence and command decisions helped create the conditions for the American victory."},
+{t:"The United States won because aircraft carriers were not involved in the battle.",p:2,fb:"Carrier aircraft were central to the Battle of Midway."}]},
+{topic:"Mission 18 — Midway's Strategic Impact",intel:"At Midway in June 1942, Japan lost four fleet carriers: Akagi, Kaga, Sōryū, and Hiryū. The battle shifted the balance of carrier power in the Pacific.",q:"What was the most important strategic consequence of Midway?",choices:[
+{t:"Japan lost four fleet carriers and experienced a major setback to its offensive capability, while the United States gained greater strategic initiative.",p:4,fb:"Correct. Midway was a major turning point, though the Pacific War continued."},
+{t:"The Soviet Union surrendered to Japan.",p:-4,fb:"The Soviet Union did not surrender to Japan at Midway."},
+{t:"The United States lost all its carriers and could no longer fight in the Pacific.",p:-2,fb:"The United States retained carrier forces and continued offensive operations."},
+{t:"The battle caused Germany to surrender the same day.",p:2,fb:"Germany continued fighting in Europe long after Midway."}]},
+{topic:"Mission 19 — Strategy vs. Technology",intel:"Across WWII, new equipment helped armies and navies, but outcomes also depended on fuel, manufacturing, trained crews, intelligence, leadership, and the ability to replace losses.",q:"A commander has excellent aircraft but weak fuel supplies and poor intelligence. What is the best assessment?",choices:[
+{t:"The commander is guaranteed victory because aircraft alone decide every battle.",p:-4,fb:"Technology alone does not guarantee success."},
+{t:"The commander should ignore intelligence and send every aircraft on the first available mission.",p:-2,fb:"That wastes resources and ignores the value of reconnaissance and planning."},
+{t:"The commander should focus only on propaganda because supplies never matter in modern war.",p:2,fb:"Propaganda may affect morale, but operational supply and intelligence remain essential."},
+{t:"The commander should coordinate intelligence, logistics, trained crews, and operational goals so that technology can be used effectively.",p:4,fb:"Correct. Technology works best when supported by the systems needed to deploy it."}]},
+{topic:"Mission 20 — The Big Picture",intel:"The Allied victory came from many connected factors: industrial output, military technology, intelligence, strategic decisions, coalition warfare, and the ability to sustain long campaigns.",q:"Which conclusion best connects the major themes of this midterm?",choices:[
+{t:"The war was decided by one weapon, and economic production, intelligence, and leadership had no influence.",p:-4,fb:"WWII outcomes depended on many interacting military, economic, and strategic factors."},
+{t:"The Allies succeeded only because every Axis commander made the same mistake at the same time.",p:-2,fb:"Axis errors mattered, but Allied resources, planning, intelligence, and coordination also played major roles."},
+{t:"Victory depended on the interaction of industrial capacity, technology, intelligence, strategy, and the ability to adapt to changing conditions.",p:4,fb:"Correct. This is the strongest overall synthesis of the exam themes."},
+{t:"Once a country wins its first major battle, the rest of the war is automatically decided.",p:2,fb:"Major victories matter, but wars depend on sustained resources, adaptation, and further decisions."}]}
+];
+
+let current=0, score=0, correct=0, answered=false, history=[], team="";
+function startGame(){
+  team=(document.getElementById("teamName").value||"Field Command").trim();
+  current=0;score=0;correct=0;history=[];
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("results").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+  renderQuestion();
+}
+function renderQuestion(){
+  answered=false;
+  const m=missions[current];
+  document.getElementById("missionPill").textContent=`MISSION ${current+1} / ${missions.length}`;
+  document.getElementById("scorePill").textContent=`FIELD SCORE: ${score}`;
+  document.getElementById("progressBar").style.width=`${current/missions.length*100}%`;
+  document.getElementById("topic").textContent=m.topic;
+  document.getElementById("intel").textContent=m.intel;
+  document.getElementById("question").textContent=m.q;
+  document.getElementById("feedback").classList.add("hidden");
+  document.getElementById("nextBtn").classList.add("hidden");
+  document.getElementById("status").textContent="Select your command decision.";
+  const letters=["A","B","C","D"];
+  const container=document.getElementById("choices");container.innerHTML="";
+  m.choices.forEach((c,i)=>{
+    const b=document.createElement("button");b.className="choice";
+    b.innerHTML=`<span class="letter">${letters[i]}</span><span>${escapeHtml(c.t)}</span>`;
+    b.onclick=()=>selectChoice(i,b);container.appendChild(b);
+  });
+}
+function selectChoice(index,button){
+  if(answered)return;answered=true;
+  const m=missions[current], chosen=m.choices[index];
+  score+=chosen.p;if(chosen.p===4)correct++;
+  history.push({mission:m,choice:index,points:chosen.p});
+  document.querySelectorAll(".choice").forEach((b,i)=>{
+    b.disabled=true;
+    if(m.choices[i].p===4)b.classList.add("correct");
+    else if(m.choices[i].p===2)b.classList.add("good");
+    else if(i===index)b.classList.add("bad");
+  });
+  const fb=document.getElementById("feedback");
+  const result=chosen.p===4?"MISSION SUCCESS — BEST DECISION":chosen.p===2?"PARTIAL SUCCESS — SOUND BUT INCOMPLETE":chosen.p===-2?"MISSION ERROR — INCORRECT DECISION":"CRITICAL ERROR — POOR STRATEGIC CHOICE";
+  const color=chosen.p===4?"var(--green)":chosen.p===2?"var(--gold)":"var(--red)";
+  const best=m.choices.find(c=>c.p===4);
+  fb.innerHTML=`<strong style="color:${color}">${result} (${chosen.p>0?"+":""}${chosen.p} points)</strong><br><br>${escapeHtml(chosen.fb)}<br><br><b>Commander's takeaway:</b> ${escapeHtml(best.fb)}`;
+  fb.classList.remove("hidden");
+  document.getElementById("scorePill").textContent=`FIELD SCORE: ${score}`;
+  document.getElementById("status").textContent="Decision logged. Review the intelligence before proceeding.";
+  document.getElementById("nextBtn").textContent=current===missions.length-1?"VIEW AFTER-ACTION REPORT ▶":"NEXT MISSION ▶";
+  document.getElementById("nextBtn").classList.remove("hidden");
+}
+function nextQuestion(){
+  if(!answered)return;
+  current++;
+  if(current>=missions.length)showResults();else renderQuestion();
+}
+function showResults(){
+  document.getElementById("game").classList.add("hidden");
+  document.getElementById("results").classList.remove("hidden");
+  const pct=Math.round(((score+80)/160)*100);
+  let rank,desc;
+  if(pct>=95){rank="★★★★★ THEATER COMMANDER";desc="Exceptional command. You consistently connected intelligence, resources, strategy, and consequences."}
+  else if(pct>=85){rank="★★★★ FIELD MARSHAL";desc="Outstanding performance. You demonstrated strong strategic judgment across most operations."}
+  else if(pct>=75){rank="★★★ COLONEL";desc="Mission-ready. You understand most major events and can connect decisions to outcomes."}
+  else if(pct>=60){rank="★★ CAPTAIN";desc="Developing command skills. Review the debrief and strengthen your understanding of cause and effect."}
+  else if(pct>=40){rank="★ LIEUTENANT";desc="More training required. Revisit the key events, strategies, and turning points before the midterm."}
+  else{rank="RECRUIT — RETURN TO TRAINING";desc="Command readiness is still developing. Study the debrief carefully and redeploy for another attempt."}
+  document.getElementById("resultTitle").textContent="Operation Complete";
+  document.getElementById("resultTeam").textContent=`After-action report for: ${team}`;
+  document.getElementById("percent").textContent=`${pct}%`;
+  document.getElementById("rank").textContent=rank;
+  document.getElementById("rankDesc").textContent=desc;
+  document.getElementById("meterFill").style.width=pct+"%";
+  document.getElementById("rawScore").textContent=`${score} / 80`;
+  document.getElementById("correctCount").textContent=`${correct} / 20`;
+  document.getElementById("missionsDone").textContent=`${history.length} / 20`;
+  document.getElementById("progressBar").style.width="100%";
+  const review=document.getElementById("review");review.innerHTML="";
+  history.forEach((h,i)=>{
+    const chosen=h.mission.choices[h.choice];
+    const best=h.mission.choices.find(c=>c.p===4);
+    const div=document.createElement("div");div.className="review-item";
+    div.innerHTML=`<b>${i+1}. ${escapeHtml(h.mission.topic)}</b><br><span class="small">Your decision (${h.points>0?"+":""}${h.points}): ${escapeHtml(chosen.t)}</span><br><span class="small">Best strategic decision: ${escapeHtml(best.t)}</span>`;
+    review.appendChild(div);
+  });
+}
+function restartGame(){
+  document.getElementById("results").classList.add("hidden");
+  document.getElementById("start").classList.remove("hidden");
+  document.getElementById("teamName").value="";
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+</script>
+</body>
+</html>
